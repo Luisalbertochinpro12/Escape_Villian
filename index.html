@@ -55,9 +55,9 @@
                       Villian
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                      <li><button class="dropdown-item" type="button">Beyonce</button></li>
-                      <li><button class="dropdown-item" type="button">Claudia Shenbaun</button></li>
-                      <li><button class="dropdown-item" type="button">Sebastián May</button></li>
+                      <li><button class="dropdown-item" type="button" onclick="setBeyonceImg()">Beyonce</button></li>
+                      <li><button class="dropdown-item" type="button" onclick="setClaudiaImg()">Claudia Shenbaun</button></li>
+                      <li><button class="dropdown-item" type="button"onclick="setLinuxImg()">Linux</button></li>
                     </ul>
                   </div>
                   <br>
@@ -68,16 +68,16 @@
                       Soundtrack
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                      <li><button class="dropdown-item" type="button">Im a single lady</button></li>
-                      <li><button class="dropdown-item" type="button">Gas Gas Gas</button></li>
-                      <li><button class="dropdown-item" type="button">Manejando bien rápido</button></li>
+                      <li><button class="dropdown-item" type="button" onclick="setSingleSong()">Im a single lady</button></li>
+                      <li><button class="dropdown-item" type="button" onclick="setGasSong()">Gas Gas Gas</button></li>
+                      <li><button class="dropdown-item" type="button" onclick="setMarioSong()">Manejando bien rápido</button></li>
                     </ul>
                   </div>
                 <br>
                 <b>Game mode:</b>
                 <div class="gamemode">
                     <div class="card" style="width: 18rem;">
-                        <img src="Infinite Survival.png" class="card-img-top gamemode-img" alt="...">
+                        <img src="images/Gamemode_Images/Infinite Survival.png" class="card-img-top gamemode-img" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Infinite Survival</h5>
                           <p class="card-text">Survive the villain as long as possible... It's impossible to win.</p>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="card" style="width: 18rem;">
-                        <img src="Time Survival.png" class="card-img-top gamemode-img" alt="...">
+                        <img src="images/Gamemode_Images/Time Survival.png" class="card-img-top gamemode-img" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Time Survival</h5>
                           <p class="card-text">Survive until time runs out and the authorities catch the villain</p>
@@ -109,7 +109,7 @@
       </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <audio src="single.mp3"></audio>
+    <audio src="music/single.mp3"></audio>
     <script src="app.js"></script>
 </body>
 </html>

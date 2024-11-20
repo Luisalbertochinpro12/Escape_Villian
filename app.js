@@ -5,6 +5,8 @@ const modal = new bootstrap.Modal('#myModal');
 const beyonce = document.querySelectorAll(`#beyonce`)[0]
 const audio = document.querySelector('audio')
 
+beyonce.style.backgroundImage = 'url(images/Villian_Images/beyonce.jpg)';
+
 const playerSpeed = 35
 const beyonceSpeed = 0
 
@@ -82,6 +84,37 @@ function updatePosition () {
 
 function showModal () {
     modal.show();
+};
+
+function setBeyonceImg() {
+    beyonce.style.backgroundImage = 'url(images/Villian_Images/beyonce.jpg)';
+};
+
+function setClaudiaImg() {
+    beyonce.style.backgroundImage = 'url(images/Villian_Images/claudia_shembaun.jpg)';
+    beyonce.style.backgroundSize = "cover";
+    beyonce.style.backgroundPosition = "center";
+}
+
+function setLinuxImg() {
+    beyonce.style.backgroundImage = 'url(images/Villian_Images/penguin.png)';
+    beyonce.style.backgroundSize = "cover";
+    beyonce.style.backgroundPosition = "center";
+}
+
+function setSingleSong() {
+    audio.src = "music/single.mp3";
+    audio.play();
+};
+
+function setGasSong() {
+    audio.src = "music/gas_gas_gas.mp3";
+    audio.play();
+};
+
+function setMarioSong() {
+    audio.src = "music/mario_song.mp3";
+    audio.play();
 };
 
 window.addEventListener('keydown', movePlayer)
