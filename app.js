@@ -1,22 +1,25 @@
+
 const gameArea = document.getElementById("game-area")
 const player = document.querySelector('#player');
 const modal = new bootstrap.Modal('#myModal');
-// const modal = document.querySelector(`#myModal`);
+const modal_01 = new bootstrap.Modal(`#myModal-01`);
 const beyonce = document.querySelectorAll(`#beyonce`)[0]
-const audio = document.querySelector('audio')
+const audio = document.querySelector('audio');
+const soundtrack = document.querySelector(`#soundtrack`);
+const villian = document.querySelector(`#villian`);
+let time = 5;
+let mode;
 
 beyonce.style.backgroundImage = 'url(images/Villian_Images/beyonce.jpg)';
+audio.play();
 
-const playerSpeed = 35
-const beyonceSpeed = 0
+let playerSpeed = 35
+let beyonceSpeed = 0
 
 let isPlaying = true
 let playerPosition = { x: 0, y: 0 }
 let beyoncePosition = { x: 300, y: 300 }
 
-/**
- * Esta función detecta cuando Beyonce ya te alcanzó
- */
 function detectCollision () {
     const deltaX = Math.abs(playerPosition.x - beyoncePosition.x)
     const deltaY = Math.abs(playerPosition.y - beyoncePosition.y)
@@ -77,45 +80,131 @@ function movePlayer (event) {
     updatePosition()
 }
 
+function pause () {
+    playerSpeed = 0;
+    beyonceSpeed = 0;
+}
+
 function updatePosition () {
     player.style.transform = `translate(${playerPosition.x}px, ${playerPosition.y}px)`
     beyonce.style.transform = `translate(${beyoncePosition.x}px, ${beyoncePosition.y}px)`
 };
 
 function showModal () {
+    pause();
+    audio.pause();
     modal.show();
+};
+
+function exitConfigurations() {
+    playerSpeed = 35;
+    beyonceSpeed = 1;
+    audio.play();
+};
+
+function setConfigurations() {
+    playerSpeed = 35;
+    beyonceSpeed = 1;
+    setDarkTheme();
+    checkDificult();
+    modal.hide();
+    audio.play();
 };
 
 function setBeyonceImg() {
     beyonce.style.backgroundImage = 'url(images/Villian_Images/beyonce.jpg)';
+    villian.innerHTML = "Beyonce";
 };
 
 function setClaudiaImg() {
     beyonce.style.backgroundImage = 'url(images/Villian_Images/claudia_shembaun.jpg)';
     beyonce.style.backgroundSize = "cover";
     beyonce.style.backgroundPosition = "center";
+    villian.innerHTML = "Claudia Shembaun";
 }
 
 function setLinuxImg() {
     beyonce.style.backgroundImage = 'url(images/Villian_Images/penguin.png)';
     beyonce.style.backgroundSize = "cover";
     beyonce.style.backgroundPosition = "center";
+    villian.innerHTML = "Linux";
 }
 
 function setSingleSong() {
     audio.src = "music/single.mp3";
-    audio.play();
+    soundtrack.innerHTML = "Im a single lady";
+
 };
 
 function setGasSong() {
     audio.src = "music/gas_gas_gas.mp3";
-    audio.play();
+    player.style.backgroundImage = "url(images/Player_Images/car-drift.gif)";
+    player.style.backgroundSize = "cover";
+    player.style.backgroundPosition = "center";
+    player.style.backgroundColor = "White"
+    soundtrack.innerHTML = "Gas Gas Gas";
 };
 
 function setMarioSong() {
     audio.src = "music/mario_song.mp3";
-    audio.play();
+    player.style.backgroundImage = "url(images/Player_Images/yoshi_kart.gif)";
+    player.style.backgroundSize = "cover";
+    player.style.backgroundPosition = "center";
+    player.style.backgroundColor = "White"
+    soundtrack.innerHTML = "Mario race 64";
 };
+
+function setDarkTheme () {
+    const checkBox = document.getElementById("flexSwitchCheckDefault");
+
+    if (checkBox.checked) {
+        document.body.classList.add("dark-theme-body");
+        document.querySelector(`#title`).classList.add("dark-theme-title");
+    } else {
+        document.body.classList.remove("dark-theme-body");
+        document.querySelector(`#title`).classList.remove("dark-theme-title");
+    }
+
+    console.log(checkBox.checked);
+}
+
+function checkDificult () {
+    if (mode) {
+        document.querySelector(`#countdown`).style.display = "flex";
+        setInterval(countdown, 1000);
+    } else {
+        document.querySelector(`#countdown`).style.display = "none";
+    }
+}
+
+function setTSMode() {
+    mode = true;
+}
+
+function setISMode() {
+    mode = false;
+}
+
+
+function countdown() {
+    if (time > 0) {
+        time--;
+        document.getElementById("seconds").innerHTML = time;
+        if (time === 0) {
+            modal_01.show();
+            pause(); 
+        }
+    } else {
+        clearInterval(interval);
+    }
+}
+
+
+
+
+
+
+
 
 window.addEventListener('keydown', movePlayer)
 window.addEventListener('load', () => {
