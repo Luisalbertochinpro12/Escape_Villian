@@ -3,15 +3,16 @@ const gameArea = document.getElementById("game-area")
 const player = document.querySelector('#player');
 const modal = new bootstrap.Modal('#myModal');
 const modal_01 = new bootstrap.Modal(`#myModal-01`);
+const modal_02 = new bootstrap.Modal(`#myModal-02`);
 const beyonce = document.querySelectorAll(`#beyonce`)[0]
 const audio = document.querySelector('audio');
 const soundtrack = document.querySelector(`#soundtrack`);
 const villian = document.querySelector(`#villian`);
-let time = 5;
+let time = 31;
 let mode;
+let interval;
 
 beyonce.style.backgroundImage = 'url(images/Villian_Images/beyonce.jpg)';
-audio.play();
 
 let playerSpeed = 35
 let beyonceSpeed = 0
@@ -25,13 +26,9 @@ function detectCollision () {
     const deltaY = Math.abs(playerPosition.y - beyoncePosition.y)
 
     if (deltaX <= 50 && deltaY <= 50) {
-        if(confirm('Beyonce te atrapó! Rápido, dale las gracias para salvar tu vida')) {
-            playerPosition.x = Math.floor(Math.random() * (gameArea.clientWidth - 70))
-            playerPosition.y = Math.floor(Math.random() * (gameArea.clientHeight - 70))
-        } else {
-            alert('Perdiste :(')
-            isPlaying = false
-            audio.pause()
+        if(true) {
+            modal_02.show();
+            pause();
         }
     }
 }
@@ -85,58 +82,64 @@ function pause () {
     beyonceSpeed = 0;
 }
 
+function play() {
+    playerSpeed = 35;
+    beyonceSpeed = 1;
+    audio.play();
+
+    if (mode) {
+        clearInterval(interval);
+        interval = setInterval(countdown, 1000);
+    }
+}
+
+
+
 function updatePosition () {
     player.style.transform = `translate(${playerPosition.x}px, ${playerPosition.y}px)`
     beyonce.style.transform = `translate(${beyoncePosition.x}px, ${beyoncePosition.y}px)`
 };
 
-function showModal () {
+function showModal() {
     pause();
     audio.pause();
+    clearInterval(interval);
     modal.show();
 };
 
-function exitConfigurations() {
-    playerSpeed = 35;
-    beyonceSpeed = 1;
-    audio.play();
-};
-
-function setConfigurations() {
-    playerSpeed = 35;
-    beyonceSpeed = 1;
+function setConfigurations () {
     setDarkTheme();
     checkDificult();
     modal.hide();
-    audio.play();
 };
 
-function setBeyonceImg() {
+
+function setBeyonceImg () {
     beyonce.style.backgroundImage = 'url(images/Villian_Images/beyonce.jpg)';
     villian.innerHTML = "Beyonce";
 };
 
-function setClaudiaImg() {
+function setClaudiaImg () {
     beyonce.style.backgroundImage = 'url(images/Villian_Images/claudia_shembaun.jpg)';
     beyonce.style.backgroundSize = "cover";
     beyonce.style.backgroundPosition = "center";
     villian.innerHTML = "Claudia Shembaun";
 }
 
-function setLinuxImg() {
+function setLinuxImg () {
     beyonce.style.backgroundImage = 'url(images/Villian_Images/penguin.png)';
     beyonce.style.backgroundSize = "cover";
     beyonce.style.backgroundPosition = "center";
     villian.innerHTML = "Linux";
 }
 
-function setSingleSong() {
+function setSingleSong () {
     audio.src = "music/single.mp3";
     soundtrack.innerHTML = "Im a single lady";
 
 };
 
-function setGasSong() {
+function setGasSong () {
     audio.src = "music/gas_gas_gas.mp3";
     player.style.backgroundImage = "url(images/Player_Images/car-drift.gif)";
     player.style.backgroundSize = "cover";
@@ -145,7 +148,7 @@ function setGasSong() {
     soundtrack.innerHTML = "Gas Gas Gas";
 };
 
-function setMarioSong() {
+function setMarioSong () {
     audio.src = "music/mario_song.mp3";
     player.style.backgroundImage = "url(images/Player_Images/yoshi_kart.gif)";
     player.style.backgroundSize = "cover";
@@ -159,45 +162,55 @@ function setDarkTheme () {
 
     if (checkBox.checked) {
         document.body.classList.add("dark-theme-body");
+        document.querySelector(`.legend`).classList.add("dark-theme-title");
         document.querySelector(`#title`).classList.add("dark-theme-title");
+        document.querySelector(`#seconds`).classList.add("dark-theme-title");
+        document.querySelector(`#countdown`).classList.add("dark-theme-title");
     } else {
         document.body.classList.remove("dark-theme-body");
+        document.querySelector(`#title`, `.legend`).classList.remove("dark-theme-title");
         document.querySelector(`#title`).classList.remove("dark-theme-title");
+        document.querySelector(`#seconds`).classList.remove("dark-theme-title");
+        document.querySelector(`#countdown`).classList.remove("dark-theme-title");
     }
 
     console.log(checkBox.checked);
 }
 
-function checkDificult () {
+function checkDificult() {
+    clearInterval(interval);
+
     if (mode) {
         document.querySelector(`#countdown`).style.display = "flex";
-        setInterval(countdown, 1000);
+        interval = setInterval(countdown, 1000); // Reinicia el temporizador
     } else {
         document.querySelector(`#countdown`).style.display = "none";
     }
 }
 
-function setTSMode() {
+
+function setTSMode () {
     mode = true;
 }
 
-function setISMode() {
+function setISMode () {
     mode = false;
 }
 
 
-function countdown() {
+
+function countdown () {
     if (time > 0) {
         time--;
         document.getElementById("seconds").innerHTML = time;
+
         if (time === 0) {
             modal_01.show();
-            pause(); 
+            pause();
         }
-    } else {
-        clearInterval(interval);
     }
 }
+
 
 
 
@@ -208,6 +221,5 @@ function countdown() {
 
 window.addEventListener('keydown', movePlayer)
 window.addEventListener('load', () => {
-    audio.play()
     gameLoop()
 })

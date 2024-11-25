@@ -37,6 +37,23 @@
     background-color: #171515;
 }
 
+
+.main-container {
+    margin: 15rem 0;
+}
+
+.bt {
+    bottom: 20%;
+}
+
+
+#header {
+    display: flex; 
+    flex-direction: column;
+    margin-top: 15rem;
+}
+
+
 #countdown {
     display: none;
 }

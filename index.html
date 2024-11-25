@@ -8,121 +8,129 @@
     <link rel="stylesheet" href="estilos.css">
   </head>
 <body>
-    <h1 id="title">Escapa de Beyonce</h1>
-    <div>
-        <button id="btn_configuration" type="button" class="btn btn-secondary" style="display: flex; align-items: center; justify-content: center;" onclick="showModal()">
-            <img src="https://cdn-icons-png.flaticon.com/512/17/17789.png" alt="" width="20px" height="20px">
-            <p>Configuration</p>
-        </button>
+  <div class="main-container">
+    <div class="position-absolute top-0 bt start-50 translate-middle pt-5" id="header">
+      <h1 class="" id="title">Escapa de Beyonce</h1>
+          <button id="btn_configuration" type="button" class="btn btn-secondary " onclick="showModal()">
+              <img src="https://cdn-icons-png.flaticon.com/512/17/17789.png" alt="" width="20px" height="20px">
+              <p>Configuration</p>
+          </button>
+          <button class="btn btn-success" onclick="play()">
+            Play
+          </button>
+          <p class="legend">Don't forget push the play button!</p>
     </div>
+    <div class="position-absolute top-50 start-50 translate-middle">
     <div id="game-area">
         <div id="player" class="personaje"></div>
         <div id="beyonce" class="personaje"></div>
     </div>
-
-    <div class="modal" tabindex="-1" id="myModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Configuration</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <b>Dificult: </b> 
-                <br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="easy">
-                    <label class="form-check-label" for="inlineRadio1">Easy</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                    <label class="form-check-label" for="inlineRadio2">Medium</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                    <label class="form-check-label" for="inlineRadio2">Hard</label>
-                  </div>
-                <br>
-                <b>Theme: </b>  
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" value="true">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Dark Theme</label>
-                </div>
-                <b>Villian: </b>
-                <br>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" id="villian">
-                      Beyonce
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                      <li><button class="dropdown-item" type="button" onclick="setBeyonceImg()">Beyonce</button></li>
-                      <li><button class="dropdown-item" type="button" onclick="setClaudiaImg()">Claudia Shenbaun</button></li>
-                      <li><button class="dropdown-item" type="button"onclick="setLinuxImg()">Linux</button></li>
-                    </ul>
-                  </div>
-                  <br>
-                <b>Soundtrack: </b>
-                <br>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" id="soundtrack">
-                      Im a single lady
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                      <li><button class="dropdown-item" type="button" onclick="setSingleSong()">Im a single lady</button></li>
-                      <li><button class="dropdown-item" type="button" onclick="setGasSong()">Gas Gas Gas</button></li>
-                      <li><button class="dropdown-item" type="button" onclick="setMarioSong()">Mario Race 64</button></li>
-                    </ul>
-                  </div>
-                <br>
-                <b>Game mode:</b>
-                <div class="gamemode">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/Gamemode_Images/Infinite Survival.png" class="card-img-top gamemode-img" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Infinite Survival</h5>
-                          <p class="card-text">Survive the villain as long as possible... It's impossible to win.</p>
-                            <button type="button" class="btn btn-primary" onclick="setISMode()">Select</button>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/Gamemode_Images/Time Survival.png" class="card-img-top gamemode-img" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Time Survival</h5>
-                          <p class="card-text">Survive until time runs out and the authorities catch the villain</p>
-                            <button type="button" class="btn btn-primary" onclick="setTSMode()">Select</button>
-                        </div>
-                      </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="exitConfigurations()">Close</button>
-              <button type="button" class="btn btn-primary" onclick="setConfigurations()">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="myModal-01" class="modal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Victoria</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>Lograste escapar del villano y las autoridades lo/a capturaron</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Restart!</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    
       <div id="countdown">
         <span id="seconds"></span> Segundos
       </div>
+    </div>
+  </div>
+
+  <div class="modal" tabindex="-1" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Configuration</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <b>Theme: </b>  
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" value="true">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Dark Theme</label>
+            </div>
+            <b>Villian: </b>
+            <br>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" id="villian">
+                  Beyonce
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                  <li><button class="dropdown-item" type="button" onclick="setBeyonceImg()">Beyonce</button></li>
+                  <li><button class="dropdown-item" type="button" onclick="setClaudiaImg()">Claudia Shenbaun</button></li>
+                  <li><button class="dropdown-item" type="button"onclick="setLinuxImg()">Linux</button></li>
+                </ul>
+              </div>
+              <br>
+            <b>Soundtrack: </b>
+            <br>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" id="soundtrack">
+                  Im a single lady
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                  <li><button class="dropdown-item" type="button" onclick="setSingleSong()">Im a single lady</button></li>
+                  <li><button class="dropdown-item" type="button" onclick="setGasSong()">Gas Gas Gas</button></li>
+                  <li><button class="dropdown-item" type="button" onclick="setMarioSong()">Mario Race 64</button></li>
+                </ul>
+              </div>
+            <br>
+            <b>Game mode:</b>
+            <div class="gamemode">
+                <div class="card" style="width: 18rem;">
+                    <img src="images/Gamemode_Images/Infinite Survival.png" class="card-img-top gamemode-img" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Infinite Survival</h5>
+                      <p class="card-text">Survive the villain as long as possible... It's impossible to win.</p>
+                        <button type="button" class="btn btn-primary" onclick="setISMode()">Select</button>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img src="images/Gamemode_Images/Time Survival.png" class="card-img-top gamemode-img" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Time Survival</h5>
+                      <p class="card-text">Survive until time runs out and the authorities catch the villain</p>
+                        <button type="button" class="btn btn-primary" onclick="setTSMode()">Select</button>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="setConfigurations()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="myModal-01" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Victoria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Lograste escapar del villano y las autoridades lo/a capturaron</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="location.reload()">Restart!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="myModal-02" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Derrota</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Te atrapó el villano, vuelve a intentarlo</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="location.reload()">Restart!</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <audio src="music/single.mp3"></audio>
